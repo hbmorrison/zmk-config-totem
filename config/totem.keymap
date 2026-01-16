@@ -10,8 +10,7 @@
 #define NAV  4
 #define CTLS 5
 #define FUNC 6
-#define BT   7
-#define PWR  8
+#define ADJ  7
 
 #define NON_US_DQT   LS(N2)
 #define NON_US_AT    LS(SQT)
@@ -49,13 +48,13 @@
 / {
     conditional_layers {
         compatible = "zmk,conditional-layers";
-        bt_layer {
-            if-layers = <LSYM NAV>;
-            then-layer = <BT>;
+        ladj_layer {
+            if-layers = <RSYM NAV>;
+            then-layer = <ADJ>;
         };
-        pwr_layer {
-            if-layers = <NUM RSYM>;
-            then-layer = <PWR>;
+        radj_layer {
+            if-layers = <NUM LSYM>;
+            then-layer = <ADJ>;
         };
     };
 
@@ -124,7 +123,7 @@
                   &kp J &kp L &kp U &kp Y &bspc_del
                 &kp A &kp R &kp S &kp T &kp G
                   &kp M &kp N &kp E &kp I &kp O
-                &sl_sym RSYM
+                &sl RSYM
                 &kp Z &mtl LGUI X &mtl LALT C &mtl LCTRL D &mtl LSHIFT V
                   &mtr RSHIFT K &mtr RCTRL H &mtr LALT COMMA &mtr LGUI DOT &kp FSLH
                 &sl LSYM
@@ -229,31 +228,15 @@
             >;
         };
 
-        bt_layer {
-            display-name = "BT";
+        adj_layer {
+            display-name = "ADJ";
             bindings = <
-                &none &none &none &bt BT_SEL 0 &none
-                  &none &none &none &none &none
-                &none &none &none &bt BT_SEL 1 &none
-                  &none &none &none &none &none
+                &none &none &kp E &bt BT_SEL 0 &bootloader
+                  &bootloader &none &kp I &none &none
+                &none &none &none &bt BT_SEL 1 &sys_reset
+                  &sys_reset &none &none &none &none
                 &trans
                 &none &none &bt BT_CLR &bt BT_SEL 2 &none
-                  &none &none &none &none &none
-                &trans
-                &trans &trans &trans
-                  &trans &trans &trans
-            >;
-        };
-
-        pwr_layer {
-            display-name = "PWR";
-            bindings = <
-                &none &bootloader &none &none &none
-                  &none &sys_reset &none &none &none
-                &none &none &none &none &none
-                  &none &none &none &none &none
-                &trans
-                &none &none &none &none &none
                   &none &none &none &none &none
                 &trans
                 &trans &trans &trans
