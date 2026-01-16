@@ -109,7 +109,7 @@
 
         combo_caps_word {
             timeout-ms = <100>;
-            key-positions = <34 37>;
+            key-positions = <33 36>;
             bindings = <&caps_word>;
         };
     };
