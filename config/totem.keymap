@@ -14,6 +14,7 @@
 #define PWR  8
 
 #define NON_US_DQT   LS(N2)
+#define NON_US_AT    LS(SQT)
 #define NON_US_POUND LS(N3)
 #define NON_US_PIPE  PIPE2
 #define NON_US_TILDE TILDE2
@@ -154,7 +155,7 @@
                 &none &none &none &none &none
                   &kp CARET &kp AMPS &kp ASTRK &kp UNDER &kp PLUS
                 &none &none &none &none &none
-                  &kp COLON &kp AT &kp NON_US_TILDE &kp MINUS &kp EQUAL
+                  &kp COLON &kp NON_US_AT &kp NON_US_TILDE &kp MINUS &kp EQUAL
                 &trans
                 &none &none &none &none &none
                   &kp SEMI &kp SQT &kp NON_US_HASH &none &none
