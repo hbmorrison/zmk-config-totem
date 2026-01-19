@@ -44,18 +44,18 @@
 };
 
 &caps_word {
-    continue-list = <UNDERSCORE MINUS>;
+    continue-list = <UNDERSCORE MINUS BSPC DEL>;
 };
 
 / {
     conditional_layers {
         compatible = "zmk,conditional-layers";
         ladj_layer {
-            if-layers = <RSYM NAV>;
+            if-layers = <FUNC NAV>;
             then-layer = <ADJ>;
         };
         radj_layer {
-            if-layers = <NUM LSYM>;
+            if-layers = <NUM CTLS>;
             then-layer = <ADJ>;
         };
     };
@@ -112,13 +112,31 @@
     };
 
     macros {
-        sl_sym: sl_sym {
+        sl_noshift: sl_noshift {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
             bindings
                 = <&kp LSHIFT &kp RSHIFT>
                 , <&macro_param_1to1>, <&macro_tap &sl MACRO_PLACEHOLDER>
                 ;
+        };
+
+        esc_colon: esc_colon {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp ESC &kp COLON>;
+        };
+
+        equal_gt: equal_gt {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp EQUAL &kp GT>;
+        };
+
+        colon_fslh_fslh: colon_fslh_fslh {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp COLON &kp FSLH &kp FSLH>;
         };
     };
 
@@ -142,12 +160,12 @@
                   &kp J &kp L &kp U &kp Y &bspc_del
                 &kp A &kp R &kp S &kp T &kp G
                   &kp M &kp N &kp E &kp I &kp O
-                &sl_sym RSYM
+                &lt FUNC
                 &kp Z &mtl LGUI X &mtl LALT C &mtl LCTRL D &mtl LSHIFT V
                   &mtr LSHIFT K &mtr LCTRL H &mtr LALT COMMA &mtr LGUI DOT &kp FSLH
-                &sl_sym LSYM
-                &lt FUNC TAB &sk LSHIFT &lt_retro NAV SPACE
-                  &lt_retro NUM ENTER &sk RSHIFT &lt CTLS ESC
+                &lt CTLS
+                &sl_noshift RSYM &sk LSHIFT &lt_retro NAV SPACE
+                  &lt_retro NUM ENTER &sk RSHIFT &sl_noshift LSYM
             >;
         };
 
@@ -176,7 +194,7 @@
                   &kp COLON &kp UK_AT &kp UK_TILDE &kp MINUS &kp EQUAL
                 &trans
                 &none &none &none &none &none
-                  &kp SEMI &kp SQT &kp UK_HASH &none &none
+                  &kp SEMI &kp SQT &kp UK_HASH &equal_gt &colon_fslh_fslh
                 &trans
                 &trans &trans &trans
                   &trans &trans &trans
@@ -194,7 +212,7 @@
                 &none &kp N7 &kp N8 &kp N9 &kp N0
                   &none &none &none &none &none
                 &trans
-                &trans &trans &trans
+                &trans &kp LS(TAB) &kp TAB
                   &trans &trans &trans
             >;
         };
@@ -211,7 +229,7 @@
                   &kp MIN_WIN &kp HOME &kp PAGE_DOWN &kp PAGE_UP &kp END
                 &trans
                 &trans &trans &trans
-                  &trans &trans &trans
+                  &kp ESC &esc_colon &trans
             >;
         };
 
