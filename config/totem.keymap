@@ -69,6 +69,20 @@
             keep-mods = <(MOD_RSFT)>;
         };
 
+        sl_lsym: sticky_lsym_layer {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&sl LSYM>, <&sl LSYM>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        sl_rsym: sticky_rsym_layer {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&sl RSYM>, <&sl RSYM>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
         mtl: mod_tap_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -142,10 +156,10 @@
                   &kp J &kp L &kp U &kp Y &bspc_del
                 &kp A &kp R &kp S &kp T &kp G
                   &kp M &kp N &kp E &kp I &kp O
-                &sl_sym RSYM
+                &sl_rsym
                 &kp Z &mtl LGUI X &mtl LALT C &mtl LCTRL D &mtl LSHIFT V
                   &mtr LSHIFT K &mtr LCTRL H &mtr LALT COMMA &mtr LGUI DOT &kp FSLH
-                &sl_sym LSYM
+                &sl_lsym
                 &lt FUNC TAB &sk LSHIFT &lt_retro NAV SPACE
                   &lt_retro NUM ENTER &sk RSHIFT &lt CTLS ESC
             >;
