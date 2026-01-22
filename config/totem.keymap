@@ -23,7 +23,6 @@
 #define OVERVIEW  LG(TAB)
 #define PREV_DESK LC(LG(LEFT))
 #define NEXT_TAB  LC(TAB)
-#define NEXT_WIN  LC(LA(TAB))
 #define NEXT_DESK LC(LG(RIGHT))
 #define MAX_WIN   F11
 #define MIN_WIN   LG(DOWN)
@@ -122,6 +121,13 @@
             tapping-term-ms = <200>;
             bindings = <&mo>, <&kp>;
             retro-tap;
+        };
+
+        alt_tab: alt_tab {
+            compatible = "zmk,behavior-tri-state";
+            #binding-cells = <0>;
+            bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
+            ignored-key-positions = <8>;
         };
     };
 
@@ -226,7 +232,7 @@
             display-name = "NAV";
             bindings = <
                 &none &none &none &none &none
-                  &kp OVERVIEW &kp PREV_DESK &kp NEXT_TAB &kp NEXT_WIN &kp NEXT_DESK
+                  &kp OVERVIEW &kp PREV_DESK &kp NEXT_TAB &alt_tab &kp NEXT_DESK
                 &none &none &none &none &none
                   &kp MAX_WIN &kp LEFT &kp DOWN &kp UP &kp RIGHT
                 &trans
