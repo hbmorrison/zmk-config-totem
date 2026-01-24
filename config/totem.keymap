@@ -186,8 +186,8 @@
                 &kp Z &mtl LGUI X &mtl LALT C &mtl LCTRL D &mtl LSHIFT V
                   &mtr LSHIFT K &mtr LCTRL H &mtr LALT COMMA &mtr LGUI DOT &kp FSLH
                 &sl_lsym
-                &lshift_caps &kp TAB &nav_space_cs_space
-                  &lt_retro NUM ENTER &kp ESC &rshift_caps
+                &kp TAB &lshift_caps &nav_space_cs_space
+                  &lt_retro NUM ENTER &rshift_caps &vim_esc
             >;
         };
 
@@ -234,7 +234,7 @@
                 &none &kp N7 &kp N8 &kp N9 &kp N0
                   &none &none &none &none &none
                 &trans
-                &trans &trans &trans
+                &trans &kp LS(TAB) &kp TAB
                   &trans &trans &trans
             >;
         };
@@ -251,7 +251,7 @@
                   &kp MIN_WIN &kp HOME &kp PAGE_DOWN &kp PAGE_UP &kp END
                 &trans
                 &trans &trans &trans
-                  &trans &trans &trans
+                  &kp ESC &esc_colon &trans
             >;
         };
 
